@@ -16,10 +16,10 @@
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
 	<!-- ================== END core-css ================== -->
 </head>
-<body>
+<body onload="readTask()">
 
 	<!-- BEGIN #app -->
-	<div id="app" class="app-without-sidebar">
+	<div class="app-without-sidebar">
 		<!-- BEGIN #content -->
 		<div id="content" class="app-content main-style">
 			<div class="d-flex justify-content-between align-items-center">
@@ -34,256 +34,39 @@
 					</h1>
 					<!-- END page-header -->
 				</div>
-				
 				<div class="">
-					<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="bg-teal-400 border-0 px-4 py-2 rounded-pill text-white"><i class="bi bi-plus-lg me-3 text-dark"></i>Add Task</a>
+					<button type="button" id="add-task" data-bs-toggle="modal" data-bs-target="#modal-task" class="bg-teal-400 border-0 px-4 py-2 rounded-pill text-white" ><i class="bi bi-plus-lg me-3 text-dark"></i>Add Task</a> </button>
 				</div>
 			</div>
-			
 			<div class="row justify-content-center m-0 w-100">
-				<div class=" col-lg-4 col-md-6 col-sm-12  p-1 rounded ">
+				<div class=" col-lg-4 col-md-6 col-sm-12  p-1 rounded" > 
 					<div class="w-100">
 						<div class="bg-black text-white p-3 rounded-top">
-							<h4 class="">To do (<span id="to-do-tasks-count">5</span>)</h4>
+							<h4 class="">To do (<span id="to-do-tasks-count"></span>)</h4>
 						</div>
 						<div class="w-100" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
-							<button class=" w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-question-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1 ">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-question-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class="d-flex flex-column text-start py-2 ">
-									<div class="fw-bolder h5 mb-1">Consider creating an acceptance criteria list</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#2 created in 2022-10-08</div>
-										<div class="mb-2" title="Descriptive requirements are very helpful when it comes to understanding the context of a problem, yet finally it is good to precisely specify what is expected. Thus the developer will not have to look for the actual requirements in a long, descriptive text but he will be able to easily get to the essence. One might find that sometimes — when acceptance criteria are well defined — there is little or no need for any additional information. Example:
-						a) User navigates to “/accounts” and clicks on red download CSV button
-						b) Popup appears with two buttons: “This year” and “Last year”
-						c) If user clicked on “Last year” download is initiated
-						d) CSV downloaded includes following columns…">Descriptive requirements are very helpful when it comes...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class="rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-question-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class="d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Provide examples, credentials, etc</div>
-									<div class="d-flex flex-column text-start ">
-										<div class="text-gray-600 mb-1">#3 created in 2022-10-08</div>
-										<div class="mb-2 " title="If the expectation is to process or generate some file — attach an example of such a file. If the goal is to integrate what is being developed with some service, ensure your devs have access to this service and its documentation. This list could go on and on — the bottom line is — if there is something that our developer might make use of, try to foresee it and provide them with (access to) it.">If the expectation is to process or generate some file ...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class="rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-question-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class="d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Annotate</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#4 created in 2022-10-08</div>
-										<div class="mb-2" title="The mockup provided can sometimes be confusing for developers. Especially if it contains much more content than the scope of the task described. Drop a couple of arrows, outlines and annotations here and there to emphasize what are the important parts of the mockup from the task requirements perspective.">The mockup provided can sometimes be confusing for deve...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class="rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white rounded-bottom d-flex">
-								<div class="p-2">
-									<i class="bi bi-question-circle text-green-500 fs-4 "></i> 
-								</div>
-								<div class="d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Use charts and diagrams</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#5 created in 2022-10-08</div>
-										<div class="mb-2" title="While it is not always necessary, sometimes it might be beneficial to prepare a flowchart, a block diagram or some other kind of concept visualization that will render it easy for the developer to comprehend the task and its scope.">While it is not always necessary, sometimes it might be...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class="rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12  p-1 rounded ">
-					<div class="w-100">
-						<div class=" bg-black text-white p-3 rounded-top">
-							<h4 class="">In Progress (<span id="in-progress-tasks-count">4</span>)</h4>
 
 						</div>
-						<div class="w-100" id="in-progress-tasks">
-							<!-- IN PROGRESS TASKS HERE -->
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class='bx bx-loader-alt text-green-500 fs-4'></i>
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class='bx bx-loader-alt text-green-500 fs-4'></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class='bx bx-loader-alt text-green-500 fs-4'></i>
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feagture</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<!-- <i class="bx bx-loader-alt text-green-500 fs-4"></i>  -->
-									<!-- <i class="bx bx-loader-alt"></i> -->
-									<i class='bx bx-loader-alt text-green-500 fs-4'></i>
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12  p-1 rounded ">
+				<div class=" col-lg-4 col-md-6 col-sm-12  p-1 rounded" > 
 					<div class="w-100">
 						<div class="bg-black text-white p-3 rounded-top">
-							<h4 class="">Done (<span id="done-tasks-count">4</span>)</h4>
-
+							<h4 class="">In Progress (<span id="in-progress-tasks-count"></span>)</h4>
 						</div>
-						<div class=" w-100" id="done-tasks">
+						<div class="w-100" id="in-progress-tasks">
+										<!-- IN PROGRESS TASKS HERE -->
+						</div>
+					</div>
+				</div>
+				<div class=" col-lg-4 col-md-6 col-sm-12  p-1 rounded" > 
+					<div class="w-100">
+						<div class="bg-black text-white p-3 rounded-top">
+							<h4 class="">Done (<span id="done-tasks-count"></span>)</h4>
+						</div>
+						<div class="w-100" id="done-tasks">
 							<!-- DONE TASKS HERE -->
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-check-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-check-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-check-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
-							<button class="w-100 border-0 mb-1 bg-white d-flex">
-								<div class="p-2">
-									<i class="bi bi-check-circle text-green-500 fs-4"></i> 
-								</div>
-								<div class=" d-flex flex-column text-start py-2">
-									<div class="fw-bolder h5 mb-1">Keep all the updated requirements in one place</div>
-									<div class="d-flex flex-column text-start">
-										<div class="text-gray-600 mb-1">#1 created in 2022-10-08</div>
-										<div class="mb-2" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
-									</div>
-									<div class="">
-										<span class="rounded px-2 py-1 text-white bg-cyan-600">High</span>
-										<span class=" rounded px-2 py-1 bg-gray-400">Feature</span>
-									</div>
-								</div>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -298,63 +81,6 @@
   </button> -->
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Add task</h5>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">Title</label>
-				<input type="email" class="form-control" id="exampleFormControlInput1">
-				<label for="exampleFormControlInput1" class="form-label mt-10px">Type</label>
-				<div class="form-check ms-3">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-					<label class="form-check-label" for="flexRadioDefault1">Feature</label>
-				</div>
-				<div class="form-check ms-3">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-					<label class="form-check-label" for="flexRadioDefault1">Bug</label>
-				</div>
-				<label for="exampleFormControlInput1" class="form-label mt-1">Priority</label>
-				<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-					<option selected>Please select</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-				<label for="exampleFormControlInput1" class="form-label mt-1">Status</label>
-				<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-					<option selected>Please select</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-
-				<label for="exampleFormControlInput1" class="form-label mt-1">Date</label>
-				<div>
-					<input type="date" id="start" name="trip-start"
-					value="yyyy-mm-dd" class="form-control mb-3"
-					min="2021-01-01" max="2023-12-31">
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Description</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				  </div>
-			</div>
-		</div>
-
-
-
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-light text-dark" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save</button>
-		</div>
-	  </div>
-	</div>
-  </div>
 		
 		
 		<!-- BEGIN scroll-top-btn -->
@@ -364,17 +90,123 @@
 	<!-- END #app -->
 	
 	<!-- TASK MODAL -->
-	<div class="modal fade" id="modal-task">
+	<div class="modal fade" id="modal-task" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<!-- Modal content goes here -->
+		<div class="modal-dialog">
+			<form id="form" class="modal-content">
+			  	<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add task</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  	</div>
+			  	<div class="modal-body">
+			  		<div class="mb-3">
+						<label  class="form-label">Title</label>
+						<input type="text" class="form-control" id="formTitle">
+						<label  class="form-label mt-10px">Type</label>
+						<div class="form-check ms-3">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Feature" >
+							<label class="form-check-label" >Feature</label>
+						</div>
+						<div class="form-check ms-3">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="Bug">
+							<label class="form-check-label" >Bug</label>
+						</div>
+						<label class="form-label mt-1">Priority</label>
+						<select class="form-select form-select-lg mb-3" id="formSelectPriority" aria-label=".form-select-lg example">
+							<option disabled selected>Please select</option>
+							<option  value="High">high</option>
+							<option  value="Medium">medium</option>
+							<option  value="Low">low</option>
+							<option  value="Critical">critical</option>
+						</select>
+						<label  class="form-label mt-1">Status</label>
+						<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="formSelectStatus">
+							<option disabled selected>Please select</option>
+							<option  value="To Do">To Do</option>
+							<option  value="In Progress">In Progress</option>
+							<option  value="Done">Done</option>
+						</select>
+						<label class="form-label mt-1">Date</label>
+						<div>
+								<input type="date" id="endDate" name="trip-start"
+								value="yyyy-MM-dd" class="form-control mb-3"
+								min="2021-01-01" max="2023-12-31">
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Description</label>
+							<textarea class="form-control" id="formTextarea" rows="3"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button"  class="btn btn-light text-dark" data-bs-dismiss="modal">Close</button>
+							<!-- <button type="button" id="update"  class="btn btn-success" data-bs-dismiss="modal">Update</button>
+							<button type="button" id="delete"  class="btn btn btn-danger" data-bs-dismiss="modal">Delete</button> -->
+							<button type="button" id="submit" class="btn btn-primary submit" data-bs-dismiss="modal" onclick="createTask()" >submit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-	
+	<div  class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="modal-task-edit">
+		<div class="modal-dialog">
+			<form  class="modal-content">
+			  	<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add task</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			  	</div>
+				<div class="modal-body">
+				<div class="mb-3">
+					<label  class="form-label">Title</label>
+					<input type="text" class="form-control" id="formTitle-edit">
+					<label  class="form-label mt-10px">Type</label>
+					<div class="form-check ms-3">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="feature-edit" >
+						<label class="form-check-label" >Feature</label>
+					</div>
+					<div class="form-check ms-3">
+						<input class="form-check-input" type="radio" name="flexRadioDefault" id="bug-edit">
+						<label class="form-check-label" >Bug</label>
+					</div>
+					<label class="form-label mt-1">Priority</label>
+					<select class="form-select form-select-lg mb-3" id="formSelectPriority-edit" aria-label=".form-select-lg example">
+						<option  disabled selected>Please select</option>
+						<option id="high-edit" value="1">High</option>
+						<option id="medium" value="2">medium</option>
+						<option id="low" value="3">low</option>
+						<option id="critical" value="3">critical</option>
+					</select>
+					<label  class="form-label mt-1">Status</label>
+					<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="formSelectStatus-edit">
+						<option disabled selected>Please select</option>
+						<option id="To Do" value="1">to do</option>
+						<option id="In Progress" value="2">doing</option>
+						<option id="Done" value="3">done</option>
+					</select>
+					<label  class="form-label mt-1">Date</label>
+					<div>
+						<input type="date" id="endDate-edit" name="trip-start"
+						value="yyyy-MM-dd" class="form-control mb-3"
+						min="2021-01-01" max="2023-12-31">
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Description</label>
+						<textarea class="form-control" id="formTextarea-edit" rows="3"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button"  class="btn btn-light text-dark" data-bs-dismiss="modal">Close</button>
+						<button type="button" id="update" onclick="getIndex(index)" class="btn btn-success" data-bs-dismiss="modal">Update</button>
+						<button type="button" id="delete"  class="btn btn btn-danger" data-bs-dismiss="modal">Delete</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
 	<!-- ================== END core-js ================== -->
-
-	<!-- icons not from bootsrap -->
-	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="assets/js/data.js"></script>
+	<script src="assets/js/app.js"></script>
 </body>
 </html>
